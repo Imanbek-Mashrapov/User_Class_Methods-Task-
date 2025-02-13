@@ -26,6 +26,10 @@ class UserService:
     def get_number(cls):
         return len(cls.users)
 
+    @classmethod
+    def get_all_users(cls):
+        return list(cls.users.values())
+
 
 
 
