@@ -2,20 +2,21 @@ from datetime import datetime
 
 
 class User:
-    def __init__(self, user_id, name, surname, email='', password='', birthday='01.01.1900'):
+    def __init__(self, user_id, name, surname, email='', password='', birthday=None):
         self.user_id = user_id
         self.name = name
         self.surname = surname
         self.email = email
         self.password = password
-        self.birthday = datetime.strptime(birthday, "%d.%m.%Y")
+        self.birthday = birthday
 
     def get_details(self):
         return f"User ID: {self.user_id}, Name: {self.name}, Surname: {self.surname}, Email: {self.email}, Birthday: {self.birthday}"
 
     def get_age(self):
         if self.birthday:
-            age = datetime.now().year - self.birthday.year
+            birth_year = datetime.strptime(self.birthday, '%d.%m.%Y')
+            age = datetime.now().year - birth_year.year
             return age
         return None
 
