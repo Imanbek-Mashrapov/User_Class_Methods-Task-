@@ -61,12 +61,16 @@ class UserUtil:
     def validate_email(email):
         if email.count('@') != 1:
             return False
-        email_components = email.split('@')  #name.surname@domain.com
+        email_components = email.split('@')  # name.surname@domain.com
+
+        if '.' not in email_components[0]:
+            return False
+
+        if '.' not in email_components[1]:
+            return False
+
         part1 = email_components[0].split('.')
         part2 = email_components[1].split('.')
-
-        if '.' not in part1:
-            return False
 
         if not part1[0].isalpha() or not part1[1].isalpha():
             return False
