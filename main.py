@@ -33,4 +33,6 @@ if __name__ == "__main__":
         print(person)
         print(f"User's password is strong: {UserUtil.is_strong_password(person.password)}")
 
+    print(type(user1.user_id))
+
 
