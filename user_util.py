@@ -54,8 +54,8 @@ class UserUtil:
         return uppercase and lowercase and number and special_char
 
     @staticmethod
-    def generate_email(name, surname, domain='gmail'):
-        return f"{name.lower()}.{surname.lower()}@{domain}.com"
+    def generate_email(name, surname, domain='gmail.com'):
+        return f"{name.lower().replace(' ', '_')}.{surname.lower().replace(' ', '_')}@{domain}"
 
     @staticmethod
     def validate_email(email):

@@ -21,4 +21,4 @@ class User:
         return None
 
     def __str__(self):
-        return f"User ID: {self.user_id}, Name: {self.name}, Surname: {self.surname}"
+        return f"User ID: {self.user_id}, Name: {self.name}, Surname: {self.surname}, Email: {self.email}, Birthday: {self.birthday}"
