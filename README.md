@@ -1,9 +1,10 @@
 # User Management System
+
 ## Overview
 #### This project is an object-oriented implementation of a user management system in Python. It includes three classes: User, UserService, and UserUtil, along with corresponding unit tests. The project demonstrates instance variables, class attributes/methods, and static methods.
 
 ## Features
-#### User management with attributes like user_id, name, surname, email, password, and birthday.
+#### User management with attributes: user_id, name, surname, email, password, and birthday.
 
 #### User Utility methods for user ID and password generation, email validation, and email formatting.
 
@@ -67,17 +68,87 @@
 
 ### Example 1: Creating a User
 
-#### input:
-from user import User
-from datetime import datetime
+#### Input:
+``` python
+user1 = User(user_id=230121021, name="Iman", surname="Mashrapov>", 'iman.mashrapov@gmail.com'
+print(user1.get_details())
+```
 
+#### Output:
+``` ssh
+User ID: 230121021 
+Name: Iman
+Surname: Mashrapov
+Email: iman.mashrapov@gmail.com
+Birthday: None
+```
 
-user = User(user_id=230121021, name="Iman", surname="Mashrapov>", 'iman.mashrapov@gmail.com'
+### Example 2: Adding user object to users dictionary
+#### Input:
+```python
+user1 = User(230121021, "Iman", "Mashrapov")
+UserService.add_user(user1)
 
-print(user.get_details())
+for person in UserService.users.values():
+    print(person)
+```
 
-#### output:
+#### Output:
+```ssh
+User ID: 230121021, Name: Iman, Surname: Mashrapov, Email: , Birthday: None
+```
+
+### Example 3: Generating email and password for users
+#### Input:
+```python
+user1 = User(230121021, "Iman", "Mashrapov")
+user1.email = UserUtil.generate_email(user1.name, user1.surname)
+user1.password = UserUtil.generate_password(10)
+
+print(user1.get_details())
+print(f'User1 password: "{user1.password}"')
+```
+
+#### Output:
+```ssh
 User ID: 230121021, Name: Iman, Surname: Mashrapov, Email: iman.mashrapov@gmail.com, Birthday: None
+User1 password: "Eou:WT.r5+
+```
+
+### Example 4: Generate user id:
+#### Input:
+```python
+user1 = User(UserUtil.generate_user_id(), 'Aaa', 'Bbb')
+print(user1)
+```
+
+#### Output:
+```ssh
+User ID: 254621665, Name: Aaa, Surname: Bbb, Email: , Birthday: None
+```
+
+### Example 5: Check if password is strong and validate email
+#### Input:
+```python
+password1 = 'qwerty123'
+password2 = 'Pkt197#uhg786!'
+
+email1 = 'ronaldo7@gmail.com'
+email2 = 'john.doe@gmail.com'
+
+print(UserUtil.is_strong_password(password1))
+print(UserUtil.is_strong_password(password2))
+print(UserUtil.validate_email(email1))
+print(UserUtil.validate_email(email2))
+```
+
+#### Output:
+```ssh
+False
+True
+False
+True
+```
 
 ## UML:
 ![user_management_uml.png](user_management_uml.png)
